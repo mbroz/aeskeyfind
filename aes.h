@@ -12,7 +12,7 @@ extern uint8_t rcon[255];
 static inline uint32_t key_core(uint32_t k, int i) {
     uint32_t t = 0;
     for (int j=0; j<4; j++)
-        t = set_byte(t, (j-1)%4, sbox[get_byte(k,j)]);
+        t = set_byte(t, (j+3)%4, sbox[get_byte(k,j)]);
     return set_byte(t, 0, get_byte(t,0) ^ rcon[i]);
 }
 
